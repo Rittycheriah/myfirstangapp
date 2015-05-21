@@ -2,4 +2,19 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  h2 My name is {{name}}
+
+  input(type='text', ng-model='adj')
+  h3 I AM {{adj}}
+
+  label Click to show a message
+    input(type='checkbox', ng-model='seeMessage')
+  h4 seeMessage: {{seeMessage}}
+  h1(ng-show='seeMessage') supercalifragilisticeskspyalidocious
+
+  pre{{instructors | json}}
+
+  p Search: 
+  input(type='text', ng-model='query')
+  ul 
+    li(ng-repeat='instructor in instructors | filter:query'){{instructor.name}} is allergic to {{instructor.allergies}}
